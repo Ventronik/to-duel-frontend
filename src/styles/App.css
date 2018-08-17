@@ -36,17 +36,13 @@ div.jumbotron{
   padding: 0px;
   margin: 0px;
   margin-bottom: 0px;
-  height: 300px;
+  height: 250px;
   font-family: 'IM Fell English SC', serif;
-}
-
-.row{
-  /* height: 285px; */
 }
 
 .logo{
   height: 128px;
-  margin-top: 75px;
+  margin-top: 50px;
 }
 
 .title{
@@ -58,8 +54,6 @@ div.jumbotron{
   font-family: 'IM Fell English SC', serif;
   font-size: 3rem;
 }
-
-
 
 div a {
   color: #5bc0de

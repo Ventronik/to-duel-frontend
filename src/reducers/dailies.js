@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
-import {
-  FETCH_DAILIES_SUCCESS,
-  CHECK,
-} from '../actions/dailies'
+import { FETCH_DAILIES_SUCCESS, CHECK } from '../actions/dailies'
+import { CLEAR_DAILIES } from '../actions/auth'
+
 
 const filteredArchivedDailies = (action) => {
   if(action.payload) {
@@ -20,6 +19,8 @@ const dailies = (state = [], action) => {
       return state.map(ele =>
         ele.id === action.payload ?
         { ...ele, checked: !ele.checked} : {...ele} )
+    case CLEAR_DAILIES:
+      return state = []
     default:
       return state
   }

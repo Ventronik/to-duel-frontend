@@ -44,10 +44,6 @@ class DuelButton extends React.Component {
 		const newValue = value.split(',');
 	  this.setState(this.state.value.length === 3 ? {value: [this.state.value[0],this.state.value[1],newValue[3]]}: { value: newValue});
   }
-  //
-  // handleOpponent = (value) => {
-  //   console.log("JUSTIN!!!!!: ", value)
-  // }
 
   render () {
     const opponents = this.props.duels.opponentList

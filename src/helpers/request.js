@@ -3,7 +3,6 @@ import axios from 'axios';
 const request = (path, method = 'get', body = null) => {
   let bearerToken = '';
   const token = localStorage.getItem('token');
-  // console.log(path,method,body)
   if (token) {
     bearerToken = `Bearer ${token}`
   }

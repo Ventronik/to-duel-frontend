@@ -10,8 +10,6 @@ import withAuthentication from './helpers/withAuthentication'
 
 import './styles/App.css';
 import Header from './components/Header';
-import Login from './components/Login';
-import Signup from './components/Signup';
 import DailyList from './components/DailyList';
 import DuelList from './components/DuelList';
 

@@ -14,9 +14,11 @@ export const NOT_LOGGED_IN = 'NOT_LOGGED_IN';
 
 export const USER_LOGOUT = 'USER_LOGOUT';
 
+export const CLEAR_DAILIES = 'CLEAR_DAILIES';
+export const CLEAR_DUELS = 'CLEAR_DUELS';
+
 export const userLogin = ({email, password}, history) => (
   dispatch => {
-    console.log(email, password)
     dispatch({type: USER_LOGIN_PENDING});
     request('/auth/token', 'post', {email, password})
     .then(response => {
@@ -43,7 +45,6 @@ export const userLogin = ({email, password}, history) => (
 
 export const userSignup = (newUser, history) => (
   dispatch => {
-    console.log(newUser)
     dispatch({type: USER_SIGNUP_PENDING});
     request('/users', 'post', newUser)
     .then(response => {
@@ -84,5 +85,8 @@ export const userLogout = () => (
   dispatch => {
     localStorage.removeItem('token');
     dispatch({type: USER_LOGOUT});
+    dispatch({type: CLEAR_DAILIES});
+    dispatch({type: CLEAR_DUELS});
+    AuthenticationService.setAuthState(null)
   }
 );

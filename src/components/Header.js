@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Jumbotron, Container, Row, Col, Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
-import { BrowserRouter, Switch, Route, Link} from 'react-router-dom';
+import { Route, Link} from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -35,11 +35,17 @@ class Header extends React.Component {
             { this.props.authState ? (
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <NavLink href="/" className="nav-link" onClick={() => this.props.userLogout()}>Log Out</NavLink>
+                  <NavLink href="https://github.com/gEightyTwo/to-duel-frontend" className="nav-link" onClick={() => this.props.userLogout()}>Github</NavLink>
+                </NavItem>
+                <NavItem>
+                  <Link className="nav-link" to="/" onClick={() => this.props.userLogout()}>Log Out</Link>
                 </NavItem>
               </Nav>
             ) : (
               <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <NavLink href="https://github.com/gEightyTwo/to-duel-frontend" className="nav-link" onClick={() => this.props.userLogout()}>Github</NavLink>
+                </NavItem>
                 <NavItem>
                   <Link className="nav-link" to="/login">Login</Link>
                 </NavItem>

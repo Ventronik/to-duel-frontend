@@ -26,7 +26,6 @@ class Duel extends React.Component {
   fetchDuel = (userId, duelId) => {
     request(`/users/${userId}/duels/${duelId}`)
     .then((response) => {
-      console.log('Response: ', response.data.data);
       let userDailies= [];
       let opponentDailies= []
       let userDailyCounts= [0,0,0]
@@ -75,7 +74,7 @@ class Duel extends React.Component {
     }
   }
 
-  componentDidUpdate = async (prevProps, prevState) => {
+  componentWillUpdate = async (prevProps, prevState) => {
     if(prevProps.authState !== this.props.authState || prevProps.dailies !== this.props.dailies){
       this.fetchDuel(this.props.authState.id, this.props.duel.id)
     }
@@ -154,8 +153,8 @@ class Duel extends React.Component {
               </Button>
             </FormGroup> :
             null}
-            { u2_accepted && !u1_confirmed && end_time > this.props.today && !(this.props.authState.id === u1_id) ||
-              !u2_accepted && end_time > this.props.today && !(this.props.authState.id === u2_id) ?
+            { (u2_accepted && !u1_confirmed && end_time > this.props.today && !(this.props.authState.id === u1_id)) ||
+              (!u2_accepted && end_time > this.props.today && !(this.props.authState.id === u2_id)) ?
               <div>
                 <Alert color="warning">Awaiting Opponents Response</Alert>
               </div>
@@ -169,11 +168,11 @@ class Duel extends React.Component {
 }
 
 const mapStateToProps = ({dailies}) => {
-  return {dailies}
+ return {dailies}
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({rejectDuel, confirmDuel}, dispatch)
+ return bindActionCreators({rejectDuel, confirmDuel}, dispatch)
 }
 
 export default withAuthentication(connect(mapStateToProps, mapDispatchToProps)(Duel));

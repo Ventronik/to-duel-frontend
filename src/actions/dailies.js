@@ -6,7 +6,6 @@ export const CHECK = 'CHECK';
 
 export const fetchDailies = (id) => (
   dispatch => {
-    // console.log('fetchDailies')
     request(`/users/${id}/dailies`)
     .then((response) => {
       dispatch({
@@ -18,7 +17,6 @@ export const fetchDailies = (id) => (
 
 export const addDaily = (name, userId) => (
   dispatch => {
-    // console.log('add')
     request(`/users/${userId}/dailies`, 'post', {name})
     .then((response) => {
       dispatch(fetchDailies(userId))
@@ -28,7 +26,6 @@ export const addDaily = (name, userId) => (
 
 export const handleCheck = (userId, dailyId, completed) => (
   dispatch => {
-    // console.log('handleCheck')
     request(`/users/${userId}/dailies/${dailyId}/dailyHistory`, 'post', {completed})
     .then((response) => {
       dispatch(fetchDailies(userId))

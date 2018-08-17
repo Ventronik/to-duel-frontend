@@ -15,7 +15,6 @@ class Login extends React.Component {
 
  handleLogin = event => {
    event.preventDefault();
-   console.log('hi');
    this.props.userLogin(this.state, this.props.history);
    this.setState(this.state);
  };

@@ -6,6 +6,8 @@ import thunkMiddleware from 'redux-thunk';
 export default(initialState) => {
     return createStore(
       rootReducer,
-      applyMiddleware(logger, thunkMiddleware)
+      process.env.NODE_ENV === 'production' ?
+        applyMiddleware(thunkMiddleware) :
+        applyMiddleware(logger, thunkMiddleware)
     );
 }
