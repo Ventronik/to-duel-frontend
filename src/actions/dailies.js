@@ -9,7 +9,9 @@ export const fetchDailies = (id) => (
     // console.log('fetchDailies')
     request(`/users/${id}/dailies`)
     .then((response) => {
-      dispatch({type: FETCH_DAILIES_SUCCESS, payload: response.data.data})
+      dispatch({
+        type: FETCH_DAILIES_SUCCESS,
+        payload: response.data.data})
     })
   }
 )
